@@ -1,6 +1,6 @@
 FROM node:12.4-alpine
 
-RUN npm install webpack -g
+RUN npm install webpack webpack-cli -g
 
 WORKDIR /tmp
 COPY package.json /tmp/
