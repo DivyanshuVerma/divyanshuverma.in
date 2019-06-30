@@ -4,7 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-  entry: ['./src/app/index.js', './src/styles/index.css'],
+  entry: ['./src/app/index.js'],
   optimization: {
     minimizer: [new TerserPlugin()],
   },
@@ -15,13 +15,16 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.s?css$/,
         use: [
           {
             loader: "style-loader"
           },
           {
             loader: "css-loader"
+          },
+          {
+            loader: "sass-loader"
           }
         ]
       }

@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    line-height: 1.5;
+    color: #555;
+}
+
+article,aside,figcaption,figure,footer,header,nav,section {
+    display: block
+}
+
+h1,h2,h3,h4,stong {
+    margin-top: 1em;
+    padding-top: 1em;
+    line-height: 1.25;
+    color: #333
+}
+
+h1 {
+    font-size: 2.5rem
+}
+
+h2 {
+    font-size: 2rem
+}
+
+h3 {
+    font-size: 1.5rem
+}
+
+h4 {
+    font-size: 1rem
+}
+
+ol,ul {
+    padding-left: 40px
+}
+
+figure,ol,p,ul {
+    margin: 1em 0
+}
+
+a img {
+    border: none
+}
+
+sub,sup {
+    line-height: 0
+}
+
+#particles-js {
+    background: #1a222c;
+    display: flex;
+    vertical-align: bottom;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed
+}
+
+#particles-js .particles-js-canvas-el {
+    height: 100vh!important
+}
+
+.header {
+    font-family: 'Open Sans',sans-serif;
+    z-index: 1;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0 auto;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%)
+}
+
+.header .site-title {
+    font-size: 50px;
+    font-weight: 100;
+    display: block;
+    line-height: 1;
+    color: #fff
+}
+
+@media only screen and (min-width: 768px) {
+    .header .site-title {
+        margin:0;
+        font-size: 76px
+    }
+}
+
+.header .site-description {
+    font-size: 20px;
+    display: block;
+    line-height: 1;
+    color: #fff;
+    margin-top: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+    .header .site-description {
+        font-size:34px
+    }
+}
