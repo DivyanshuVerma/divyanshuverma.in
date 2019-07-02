@@ -99,10 +99,51 @@ sub,sup {
     line-height: 1;
     color: #fff;
     margin-top: 30px;
+    margin-bottom: 50px;
 }
 
 @media only screen and (min-width: 768px) {
     .header .site-description {
         font-size:34px
+    }
+}
+
+
+.header-icons {
+    display: flex;
+    justify-content: center;
+    text-align: center
+}
+
+.header-icons a {
+    outline: 0!important;
+    border: none!important;
+    outline-style: none!important;
+    -moz-outline-style: none!important
+}
+
+.header-icons .icon {
+    color: #fff;
+    text-align: center
+}
+
+.header-icons .icon {
+    height: 20px;
+    padding: 20px;
+    transition: all .5s;
+    width: 20px;
+    font-size: 20px;
+    margin: 10px;
+}
+
+.header-icons .icon:active,.header-icons .icon:hover {
+    color: #1a222c;
+}
+
+@media only screen and (min-width: 768px) {
+    .header-icons .icon {
+        width: 40px;
+        height: 40px;
+        font-size: 40px
     }
 }
