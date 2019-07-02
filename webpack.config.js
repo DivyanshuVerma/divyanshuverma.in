@@ -7,7 +7,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-  entry: ['./src/app/index.js'],
+  entry: ['./src/app/index.js', './src/styles/index.css'],
+  externals: {
+    particlesJS: 'particlesJS'
+  },
   optimization: {
     minimizer: [
       new TerserPlugin(),
