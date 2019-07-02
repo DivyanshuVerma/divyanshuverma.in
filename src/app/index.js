@@ -1,5 +1,5 @@
 import "particles.js";
-import '../styles/index.scss';
+import '../styles/index.css';
 
 particlesJS("particles-js", {
         particles: {

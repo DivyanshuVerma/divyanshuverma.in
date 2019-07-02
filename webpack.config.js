@@ -1,4 +1,7 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssNano = require('cssnano');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -6,7 +9,16 @@ const TerserPlugin = require('terser-webpack-plugin');
 module.exports = {
   entry: ['./src/app/index.js'],
   optimization: {
-    minimizer: [new TerserPlugin()],
+    minimizer: [
+      new TerserPlugin(),
+      new OptimizeCSSAssetsPlugin({
+        cssProcessor: CssNano,
+        cssProcessorPluginOptions: {
+          preset: ['default', { discardComments: { removeAll: true } }],
+        },
+        canPrint: true
+      })
+    ],
   },
   output: {
     filename: 'main.js',
@@ -24,22 +36,25 @@ module.exports = {
         ]
       },
       {
-        test: /\.s?css$/,
+        test: /\.css$/,
         use: [
           {
-            loader: "style-loader"
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: 'styles/',
+            },
           },
           {
             loader: "css-loader"
-          },
-          {
-            loader: "sass-loader"
           }
         ]
       }
     ]
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css'
+    }),
     new HtmlWebpackPlugin({
       template: __dirname + "/src/public/index.html",
       inject: 'body',
