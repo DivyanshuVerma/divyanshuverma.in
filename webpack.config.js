@@ -6,6 +6,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
+const CompressionPlugin = require('compression-webpack-plugin');
+const BrotliPlugin = require('brotli-webpack-plugin');
+
 module.exports = {
   entry: ['./src/app/index.js', './src/styles/index.css'],
   externals: {
@@ -24,7 +27,7 @@ module.exports = {
     ],
   },
   output: {
-    filename: 'main.js',
+    filename: 'main.[hash].js',
     path: path.resolve(__dirname, 'dist')
   },
   module: {
@@ -56,13 +59,22 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].css'
+      filename: '[name].[contenthash].css'
     }),
     new HtmlWebpackPlugin({
       template: __dirname + "/src/public/index.html",
       inject: 'body',
       collapseWhitespace: true,
-
+    }),
+    new CompressionPlugin({
+      test: /\.js$|\.css$|\.html$/,
+      filename: '[path].gz',
+      minRatio: 1
+    }),
+    new BrotliPlugin({
+      test: /\.js$|\.css$|\.html$/,
+      asset: '[path].br',
+      minRatio: 1
     }),
     new CopyWebpackPlugin([{
       from: __dirname + '/src/public'
