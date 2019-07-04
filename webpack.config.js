@@ -12,7 +12,7 @@ const BrotliPlugin = require('brotli-webpack-plugin');
 module.exports = {
   entry: ['./src/app/index.js', './src/styles/index.css'],
   externals: {
-    SuperParticles: 'SuperParticles'
+    particlesJS: 'particlesJS'
   },
   optimization: {
     minimizer: [
