@@ -33,11 +33,11 @@ body {
 
 .site-wrap {
     display: grid;
-    grid: 2fr 1fr 1fr/ 1fr;
+    grid: 2fr 1fr 1fr 1fr/ 1fr;
     justify-items: center;
 }
 
-.site-title, .site-description {
+.site-title, .site-description, .site-location {
     justify-self: stretch;
     align-self: center;
 }
@@ -49,6 +49,11 @@ body {
 
 .site-description {
     font-size: 20px;
+    font-weight: 100;
+}
+
+.site-location {
+    font-size: 18px;
     font-weight: 100;
 }
 
@@ -78,6 +83,10 @@ body {
     width: 25px;
 }
 
+.header-icon-img-games {
+    height: 25px;
+}
+
 a {
     text-decoration: none;
     color: #fff;
@@ -92,7 +101,15 @@ a {
         font-size: 34px;
         font-weight: 100;
     }
+    .site-location {
+        font-size: 30px;
+        font-weight: 100;
+        margin-bottom: 20px;
+    }
     .header-icon-img {
         width: 40px;
+    }
+    .header-icon-img-games {
+        height: 40px
     }
 }

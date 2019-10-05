@@ -10,6 +10,48 @@ function ready(fn) {
   }
 }
 
+var clearIntervalId = 0;
+
+function setUpParticles() {
+  if( particlesJS != undefined ) {
+    window.clearInterval(clearIntervalId);
+    console.log("cleared interval");
+
+    particlesJS("particles-js", {
+        particles: {
+            number: {
+                value: 80,
+                density: {
+                    enable: true,
+                    value_area: 500
+                }
+            },
+            opacity: {
+                random: true,
+                anim: {
+                    enable: true,
+                    speed: 1,
+                }
+            },
+            size: {
+                value: 3,
+                random: true,
+                anim: { enable: false }
+            },
+            line_linked: { enable: false }
+        },
+        interactivity: {
+            detect_on: "canvas",
+            events: {
+                onhover: { enable: false },
+                onclick: { enable: false }
+            }
+        },
+        retina_detect: false
+    });
+  }
+}
+
 ready(function() {
 
   const TRACKING_VERSION = 1;
@@ -63,7 +105,7 @@ ready(function() {
 
   ga('require', 'outboundLinkTracker', {
     events: ['click', 'auxclick', 'contextmenu'],
-    linkSelector: '.js-track-clicks'
+    linkSelector: '.out-link'
   });
 
   ga('set', 'transport', 'beacon');
@@ -71,38 +113,7 @@ ready(function() {
 
   ga('set', 'app_version', TRACKING_VERSION);
   ga('set', 'window_id', uuid());
-  sendNavigationTimingMetrics()
+  sendNavigationTimingMetrics();
 
-  particlesJS("particles-js", {
-      particles: {
-          number: {
-              value: 80,
-              density: {
-                  enable: true,
-                  value_area: 500
-              }
-          },
-          opacity: {
-              random: true,
-              anim: {
-                  enable: true,
-                  speed: 1,
-              }
-          },
-          size: {
-              value: 3,
-              random: true,
-              anim: { enable: false }
-          },
-          line_linked: { enable: false }
-      },
-      interactivity: {
-          detect_on: "canvas",
-          events: {
-              onhover: { enable: false },
-              onclick: { enable: false }
-          }
-      },
-      retina_detect: false
-  });
+  clearIntervalId = window.setInterval(setUpParticles, 200);
 });
