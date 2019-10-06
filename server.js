@@ -86,6 +86,14 @@ function getBestAcceptedEncoding(req) {
 }
 
 
+app.get('/cv', function(req, res, next) {
+  var filepath = __dirname + '/dist/cv.pdf';
+  //res.download(filepath, "DivyanshuVerma1.pdf");
+
+  res.setHeader('Content-Disposition', 'inline; filename=Divyanshu Verma [divyanshuverma.in].pdf');
+  tryRequestedResource(req, res, filepath, "application/pdf");
+});
+
 
 app.use( function( req, res, next ) {
   var filepath = __dirname + '/dist' + req.url;
@@ -103,7 +111,6 @@ app.use( function( req, res, next ) {
 
   tryCompressedResource(req, res, filepath, contentType);
 });
-
 
 app.listen(port);
 console.log('Server up at port ' + port)
